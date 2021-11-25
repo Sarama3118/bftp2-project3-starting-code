@@ -67,9 +67,14 @@ public class SampleDataLoader {
                             "Florian Zeller",
                             2020,
                             "Anne (Olivia Colman) is losing patience with her 80-year-old father, Anthony (Anthony Hopkins), whose grip on reality is fading but who refuses to allow a carer to look after him. She's moving to Paris and needs to ensure his safety while she is away so before she leaves she must find someone who will endure him. "
-                            )
+                            ),
 
-
+            new Movie("The Perks of Being a Wallflower",
+                    "https://m.media-amazon.com/images/I/71fLFQge1hL._SY606_.jpg",
+                     "Stephen Chbosky",
+                    2012,
+                    "Based on the novel written by Stephen Chbosky, this is about 15-year-old Charlie (Logan Lerman), an endearing and naive outsider, coping with first love (Emma Watson), the suicide of his best friend, and his own mental illness while struggling to find a group of people with whom he belongs. The introvert freshman is taken under the wings of two seniors, Sam and Patrick, who welcome him to the real world. "
+            )
             );
 
             movieRepository.saveAll(movies);
