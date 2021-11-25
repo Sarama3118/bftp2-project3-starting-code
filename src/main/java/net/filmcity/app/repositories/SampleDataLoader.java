@@ -61,8 +61,15 @@ public class SampleDataLoader {
                             "Mimi Leder",
                             2018,
                             "On the Basis of Sex is inspired by the true story of a young Ruth Bader Ginsburg – then a struggling attorney and new mother – who faces adversity and numerous obstacles in her fight for equal rights throughout her career."
+                            ),
+                    new Movie("The Father",
+                            "https://www.senderi.org/admin/magatzem/blocfot/thefather-273045718-large.jpg",
+                            "Florian Zeller",
+                            2020,
+                            "Anne (Olivia Colman) is losing patience with her 80-year-old father, Anthony (Anthony Hopkins), whose grip on reality is fading but who refuses to allow a carer to look after him. She's moving to Paris and needs to ensure his safety while she is away so before she leaves she must find someone who will endure him. "
                             )
-                    // Añadir aqui todas las pelis del catálogo!!
+
+
             );
 
             movieRepository.saveAll(movies);
