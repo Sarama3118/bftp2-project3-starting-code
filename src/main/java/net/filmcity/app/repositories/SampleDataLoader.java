@@ -69,12 +69,19 @@ public class SampleDataLoader {
                             "Anne (Olivia Colman) is losing patience with her 80-year-old father, Anthony (Anthony Hopkins), whose grip on reality is fading but who refuses to allow a carer to look after him. She's moving to Paris and needs to ensure his safety while she is away so before she leaves she must find someone who will endure him. "
                             ),
 
-            new Movie("The Perks of Being a Wallflower",
-                    "https://m.media-amazon.com/images/I/71fLFQge1hL._SY606_.jpg",
-                     "Stephen Chbosky",
-                    2012,
-                    "Based on the novel written by Stephen Chbosky, this is about 15-year-old Charlie (Logan Lerman), an endearing and naive outsider, coping with first love (Emma Watson), the suicide of his best friend, and his own mental illness while struggling to find a group of people with whom he belongs. The introvert freshman is taken under the wings of two seniors, Sam and Patrick, who welcome him to the real world. "
-            )
+                    new Movie("The Perks of Being a Wallflower",
+                            "https://m.media-amazon.com/images/I/71fLFQge1hL._SY606_.jpg",
+                             "Stephen Chbosky",
+                            2012,
+                            "Based on the novel written by Stephen Chbosky, this is about 15-year-old Charlie (Logan Lerman), an endearing and naive outsider, coping with first love (Emma Watson), the suicide of his best friend, and his own mental illness while struggling to find a group of people with whom he belongs. The introvert freshman is taken under the wings of two seniors, Sam and Patrick, who welcome him to the real world. "
+                    ),
+
+                    new Movie("The Color Purple",
+                            "http://prodimage.images-bn.com/pimages/0085391163107_p0_v4_s1200x630.jpg",
+                            "Steven Spielberg",
+                            1985,
+                            "Early 20th century. It tells the story of Celie, a fourteen-year-old black teenager who is pregnant with her own father, a despotic and cruel man. From then on his life will be full of pain and humiliation."
+                    )
             );
 
             movieRepository.saveAll(movies);
