@@ -81,7 +81,13 @@ public class SampleDataLoader {
                             "Steven Spielberg",
                             1985,
                             "Early 20th century. It tells the story of Celie, a fourteen-year-old black teenager who is pregnant with her own father, a despotic and cruel man. From then on his life will be full of pain and humiliation."
-                    )
+                    ),
+                    new Movie("Coraline",
+                    "http://image.tmdb.org/t/p/original/sYXXUeSrx9TBbFpbgtLklW5kmVR.jpg",
+                    "Henry Selick",
+                    1985,
+                    "Based on a novel by Neil Gaiman, it tells the story of a girl who, when crossing a wall of her house, finds an improved version of her life: her parents are more considerate of her, but the wonderful sensations will give way to fear and anguish."
+            )
             );
 
             movieRepository.saveAll(movies);
