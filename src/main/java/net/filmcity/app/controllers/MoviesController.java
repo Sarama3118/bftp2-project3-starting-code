@@ -22,6 +22,8 @@ public class MoviesController {
         return movieRepository.findAll();
     }
 
+
+
     @PostMapping("/movies")
     public Movie addMovie(@RequestBody Movie movie) {
         movieRepository.save(movie);
@@ -32,4 +34,11 @@ public class MoviesController {
         movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
         return movieRepository.save(movie);
     }
+   @DeleteMapping("/movies/{id}")
+    public Movie deleteMovieByID(@PathVariable Long id){
+        Movie movie = movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
+        movieRepository.deleteById(id);
+        return movie;
+    }
+
 }
