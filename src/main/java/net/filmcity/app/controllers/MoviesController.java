@@ -34,6 +34,11 @@ public class MoviesController {
         movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
         return movieRepository.save(movie);
     }
+    @GetMapping("/movies/{id}")
+    public Movie findMovie(@PathVariable Long id){
+        return movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
+    }
+
    @DeleteMapping("/movies/{id}")
     public Movie deleteMovieByID(@PathVariable Long id){
         Movie movie = movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
