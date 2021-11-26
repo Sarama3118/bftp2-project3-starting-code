@@ -36,7 +36,7 @@ class IntegrationTests {
 
     @Test
     void returnsTheExistingCoders() throws Exception {
-
+        movieRepository.deleteAll();
         addSampleMovies();
 
         mockMvc.perform(get("/movies"))
