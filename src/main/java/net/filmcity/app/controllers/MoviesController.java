@@ -27,4 +27,9 @@ public class MoviesController {
         movieRepository.save(movie);
         return movie;
     }
+    @PutMapping("/movies")
+    public Movie updateMovieById(@RequestBody Movie movie) {
+        movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
+        return movieRepository.save(movie);
+    }
 }
