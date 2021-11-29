@@ -90,7 +90,7 @@ public class SampleDataLoader {
             ),
             new Movie("Subiendo una más",
                     "http://image.tmdb.org/t/p/original/sYXXUeSrx9TBbFpbgtLklW5kmVR.jpg",
-                    "Candy",
+                    "Laura",
                     2021, "Terror",
                     "Based on a novel by Neil Gaiman, it tells the story of a girl who, when crossing a wall of her house, finds an improved version of her life: her parents are more considerate of her, but the wonderful sensations will give way to fear and anguish."
             )
