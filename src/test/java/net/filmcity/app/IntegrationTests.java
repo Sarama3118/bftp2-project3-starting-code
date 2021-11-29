@@ -35,7 +35,7 @@ class IntegrationTests {
     }
 
     @Test
-    void returnsTheExistingCoders() throws Exception {
+    void returnsTheExistingMovies() throws Exception {
         movieRepository.deleteAll();
         addSampleMovies();
 
