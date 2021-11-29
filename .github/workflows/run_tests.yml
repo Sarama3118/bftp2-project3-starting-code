@@ -22,7 +22,3 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Build with Gradle
         run: ./gradlew build
-      - name: generate Coverage Report
-        run: ./gradlew jacocoTestReport
-      - name: publish coverage report
-        run: bash <(curl -s https://codecov.io/bash)
