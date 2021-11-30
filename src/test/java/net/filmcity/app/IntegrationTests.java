@@ -10,11 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.http.RequestEntity.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -80,9 +82,18 @@ class IntegrationTests {
     void allowsToCreateNewMovie () throws Exception {
         addSampleMovies();
 
-        mockMvc.perform(post("/movies")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"title\": \"Dory\", \"coverImage\": \"https://www.covercaratulas.com/ode/mini_mini/carteles-29294.jpg\", \"director\": \"Andrew Stanton\",  \"year\": \"2016\",  \"synopsis\": \"Friendly but forgetful blue tang Dory begins a search for her long lost parents, and everyone learns a few things about the real meaning of family along the way.\" }")
-        ).andExpect(status().isOk());
+            mockMvc.perform(MockMvcRequestBuilders.post("/movies")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content("{\"title\": \"Dory\", \"coverImage\": \"https://www.covercaratulas.com/ode/mini_mini/carteles-29294.jpg\", \"director\": \"Andrew Stanton\",  \"year\": \"2016\",  \"synopsis\": \"Friendly but forgetful blue tang Dory begins a search for her long lost parents, and everyone learns a few things about the real meaning of family along the way.\" }")
+            ).andExpect(status().isOk());
+
+           /*  List<Movie> movies = movieRepository.findAll();
+            assertThat(movies, contains(allOf(
+                    hasProperty("title", is("Dory")),
+                    hasProperty("coverImage", is("https://www.covercaratulas.com/ode/mini_mini/carteles-29294.jpg")),
+                    hasProperty("director", is("Andrew Stanton")),
+                    hasProperty("year", is("2016")),
+                    hasProperty("synopsis", is("Friendly but forgetful blue tang Dory begins a search for her long lost parents, and everyone learns a few things about the real meaning of family along the way."))
+            ))); */
         }
 }
