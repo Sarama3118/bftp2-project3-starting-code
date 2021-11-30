@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.is;
+import static org.springframework.http.RequestEntity.delete;
 import static org.springframework.http.RequestEntity.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -101,4 +103,10 @@ class IntegrationTests {
 
 
         }
-}
+        @Test
+    void allowsToDeleteAMovieById () throws Exception {
+    Movie movie = movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
+            "Steven Spielberg", 1993, "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA."));
+            mockMvc.perform(MockMvcRequestBuilders.delete("/movies/"+ movie.getId()))
+                    .andExpect(status().isOk());
+}}
