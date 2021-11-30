@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -14,7 +15,9 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.http.RequestEntity.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -72,4 +75,14 @@ class IntegrationTests {
         movieRepository.saveAll(movies);
     }
 
+
+        @Test
+    void allowsToCreateNewMovie () throws Exception {
+        addSampleMovies();
+
+        mockMvc.perform(post("/movies")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"title\": \"Dory\", \"coverImage\": \"https://www.covercaratulas.com/ode/mini_mini/carteles-29294.jpg\", \"director\": \"Andrew Stanton\",  \"year\": \"2016\",  \"synopsis\": \"Friendly but forgetful blue tang Dory begins a search for her long lost parents, and everyone learns a few things about the real meaning of family along the way.\" }")
+        ).andExpect(status().isOk());
+        }
 }
