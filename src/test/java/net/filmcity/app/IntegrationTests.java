@@ -87,13 +87,18 @@ class IntegrationTests {
                     .content("{\"title\": \"Dory\", \"coverImage\": \"https://www.covercaratulas.com/ode/mini_mini/carteles-29294.jpg\", \"director\": \"Andrew Stanton\",  \"year\": \"2016\",  \"synopsis\": \"Friendly but forgetful blue tang Dory begins a search for her long lost parents, and everyone learns a few things about the real meaning of family along the way.\" }")
             ).andExpect(status().isOk());
 
-           /*  List<Movie> movies = movieRepository.findAll();
-            assertThat(movies, contains(allOf(
-                    hasProperty("title", is("Dory")),
-                    hasProperty("coverImage", is("https://www.covercaratulas.com/ode/mini_mini/carteles-29294.jpg")),
-                    hasProperty("director", is("Andrew Stanton")),
-                    hasProperty("year", is("2016")),
-                    hasProperty("synopsis", is("Friendly but forgetful blue tang Dory begins a search for her long lost parents, and everyone learns a few things about the real meaning of family along the way."))
-            ))); */
+
+        }
+        @Test
+    void allowsToModifyAMovie() throws Exception{
+        Movie movie= movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
+             "Steven Spielberg", 1993, "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA."));
+
+        mockMvc.perform(put("/movies")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"id\":\""+ movie.getId() + "\", \"title\": \"Jurassic Park\", \"coverImage\": \"https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg\", \"director\": \"Kubrick\", \"year\": \"1993\", \"synopsis\": \"A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA.\"}")
+        ).andExpect(status().isOk());
+
+
         }
 }
