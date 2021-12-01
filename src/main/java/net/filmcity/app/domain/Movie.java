@@ -16,7 +16,7 @@ public class Movie {
     private String genre;
     @Lob
     private String synopsis;
-    private Boolean booked =false;
+    private boolean booked = false;
     private String customerName;
 
     public Movie() { }
@@ -36,6 +36,7 @@ public class Movie {
         this.year = year;
         this.genre = genre;
         this.synopsis = synopsis;
+    }
 
      public Movie(String title, String coverImage, String director, int year, String genre, String synopsis, Boolean booked, String customerName) {
             this.title = title;
