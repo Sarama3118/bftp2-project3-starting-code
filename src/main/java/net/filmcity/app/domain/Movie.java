@@ -16,7 +16,7 @@ public class Movie {
     private String genre;
     @Lob
     private String synopsis;
-    private boolean booked = false;
+    private boolean booked = true;
     private String customerName;
 
     public Movie() { }
