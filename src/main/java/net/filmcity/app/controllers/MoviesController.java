@@ -50,5 +50,14 @@ public class MoviesController {
     public Movie markFilmAsARentedByID(@RequestBody Movie movie){
         movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
         return movieRepository.save(movie);
+
     }
+
+    @PutMapping("/movies/{id}/return")
+    public Movie markFilmAsReturnedByID(@RequestBody Movie movie){
+        movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
+        return movieRepository.save(movie);
+    }
+
+
 }

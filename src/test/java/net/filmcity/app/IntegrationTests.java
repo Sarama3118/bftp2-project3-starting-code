@@ -88,9 +88,8 @@ class IntegrationTests {
                     .contentType(MediaType.APPLICATION_JSON)
                     .content("{\"title\": \"Dory\", \"coverImage\": \"https://www.covercaratulas.com/ode/mini_mini/carteles-29294.jpg\", \"director\": \"Andrew Stanton\",  \"year\": \"2016\",  \"synopsis\": \"Friendly but forgetful blue tang Dory begins a search for her long lost parents, and everyone learns a few things about the real meaning of family along the way.\" }")
             ).andExpect(status().isOk());
-
-
         }
+
         @Test
     void allowsToModifyAMovie() throws Exception{
         Movie movie= movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
@@ -100,13 +99,23 @@ class IntegrationTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"id\":\""+ movie.getId() + "\", \"title\": \"Jurassic Park\", \"coverImage\": \"https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg\", \"director\": \"Kubrick\", \"year\": \"1993\", \"synopsis\": \"A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA.\"}")
         ).andExpect(status().isOk());
-
-
         }
+
         @Test
     void allowsToDeleteAMovieById () throws Exception {
     Movie movie = movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
             "Steven Spielberg", 1993, "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA."));
             mockMvc.perform(MockMvcRequestBuilders.delete("/movies/"+ movie.getId()))
                     .andExpect(status().isOk());
-}}
+        }
+
+         @Test
+    void allowsToMarkRentedMovieById () throws Exception {
+        Movie movie = movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
+                "Steven Spielberg", 1993, "Adventure", "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA.", true, "faby"));
+        mockMvc.perform(MockMvcRequestBuilders.delete("/movies/"+ movie.getId()))
+                .andExpect(status().isOk());
+
+    }
+
+}
