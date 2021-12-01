@@ -45,5 +45,9 @@ public class MoviesController {
         movieRepository.deleteById(id);
         return movie;
     }
-
+    @PutMapping("/movies/{id}/book?customerName={name}")
+    public Movie markFilmAsARentedByID(@RequestBody Movie movie){
+        movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
+        return movieRepository.save(movie);
+    }
 }

@@ -16,6 +16,8 @@ public class Movie {
     private String genre;
     @Lob
     private String synopsis;
+    private Boolean booked =false;
+    private String customerName;
 
     public Movie() { }
 
@@ -34,6 +36,17 @@ public class Movie {
         this.year = year;
         this.genre = genre;
         this.synopsis = synopsis;
+
+     public Movie(String title, String coverImage, String director, int year, String genre, String synopsis, Boolean booked, String customerName) {
+            this.title = title;
+            this.coverImage = coverImage;
+            this.director = director;
+            this.year = year;
+            this.genre = genre;
+            this.synopsis = synopsis;
+            this.booked= booked;
+            this.customerName= customerName;
+
     }
 
     public Long getId() {
@@ -65,4 +78,12 @@ public class Movie {
     public String getSynopsis() {
         return synopsis;
     }
+
+    public Boolean getBooked(){
+         return booked;
+        }
+
+    public String getCustomerName(){
+         return customerName;
+        }
 }
