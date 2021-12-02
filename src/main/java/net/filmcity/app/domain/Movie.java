@@ -16,7 +16,7 @@ public class Movie {
     private String genre;
     @Lob
     private String synopsis;
-    private boolean booked;
+    private boolean booked = false;
     private String customerName;
     private int rating;
 
@@ -85,16 +85,15 @@ public class Movie {
         return synopsis;
     }
 
-    public Boolean getBooked() {
-        if (booked) {
-            return true;
-        } else {
-            return false;
-        }
+    public Boolean Booked(boolean b) {
+        return booked;
+    }
+    public void getBooked(boolean booked) {
+        this.booked = booked;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public void getCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getRating() {
