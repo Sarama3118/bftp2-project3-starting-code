@@ -17,10 +17,10 @@ public class Movie {
     @Lob
     private String synopsis;
     private boolean booked = false;
-    private String customerName;
+    private String renter;
     private int rating;
 
-    public Movie() {
+    public Movie(String jurassic_park, String s, String steven_spielberg, int i, String adventure, String s1, boolean b) {
     }
 
     public Movie(String title, String coverImage, String director, int year, String synopsis) {
@@ -40,7 +40,7 @@ public class Movie {
         this.synopsis = synopsis;
     }
 
-    public Movie(String title, String coverImage, String director, int year, String genre, String synopsis, Boolean booked, String customerName, int rating) {
+    public Movie(String title, String coverImage, String director, int year, String genre, String synopsis, Boolean booked, String renter, int rating) {
         this.title = title;
         this.coverImage = coverImage;
         this.director = director;
@@ -48,8 +48,12 @@ public class Movie {
         this.genre = genre;
         this.synopsis = synopsis;
         this.booked = booked;
-        this.customerName = customerName;
+        this.renter = renter;
         this.rating = rating;
+
+    }
+
+    public Movie() {
 
     }
 
@@ -92,8 +96,8 @@ public class Movie {
         this.booked = booked;
     }
 
-    public void getCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void getRenter(String renter) {
+        this.renter = renter;
     }
 
     public String getRating() {
@@ -108,4 +112,5 @@ public class Movie {
             return "5";
         }
     }
+
 }

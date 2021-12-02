@@ -26,7 +26,7 @@ public class SampleDataLoader {
                             "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
                             "Steven Spielberg",
                             1993, "Adventure",
-                            "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA."),
+                            "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA.", true, "Faby", 4),
                     new Movie("Ratatouille",
                             "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/npHNjldbeTHdKKw28bJKs7lzqzj.jpg",
                             "Brad Bird",

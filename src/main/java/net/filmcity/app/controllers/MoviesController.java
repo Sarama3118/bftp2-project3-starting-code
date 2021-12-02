@@ -46,11 +46,11 @@ public class MoviesController {
         movieRepository.deleteById(id);
         return movie;
     }
-    @PutMapping("/movies/{id}/book?customerName={name}")
+    @PutMapping("/movies/{id}/book")
     public Movie markFilmAsARentedByID(@PathVariable Long id, @RequestParam String customerName){
         Movie movie= movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
-        movie.getBooked(false);
-        movie.getCustomerName(customerName);
+        movie.getBooked(true);
+        movie.getRenter(customerName);
         return movieRepository.save(movie);
 
     }
@@ -58,8 +58,8 @@ public class MoviesController {
     @PutMapping("/movies/{id}/return")
     public Movie markFilmAsReturnedByID(@RequestBody Movie movie){
         movieRepository.findById(movie.getId()).orElseThrow(MovieNotFoundException::new);
-        movie.getBooked(true);
-        movie.getCustomerName(null);
+        movie.getBooked(false);
+        movie.getRenter(null);
         return movieRepository.save(movie);
     }
 
