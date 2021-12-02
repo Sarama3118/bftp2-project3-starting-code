@@ -18,10 +18,12 @@ public class Movie {
     private String synopsis;
     private boolean booked;
     private String customerName;
+    private int rating;
 
-    public Movie() { }
+    public Movie() {
+    }
 
-    public Movie(String title, String coverImage, String director, int year,  String synopsis) {
+    public Movie(String title, String coverImage, String director, int year, String synopsis) {
         this.title = title;
         this.coverImage = coverImage;
         this.director = director;
@@ -38,15 +40,16 @@ public class Movie {
         this.synopsis = synopsis;
     }
 
-     public Movie(String title, String coverImage, String director, int year, String genre, String synopsis, Boolean booked, String customerName) {
-            this.title = title;
-            this.coverImage = coverImage;
-            this.director = director;
-            this.year = year;
-            this.genre = genre;
-            this.synopsis = synopsis;
-            this.booked= booked;
-            this.customerName= customerName;
+    public Movie(String title, String coverImage, String director, int year, String genre, String synopsis, Boolean booked, String customerName, int rating) {
+        this.title = title;
+        this.coverImage = coverImage;
+        this.director = director;
+        this.year = year;
+        this.genre = genre;
+        this.synopsis = synopsis;
+        this.booked = booked;
+        this.customerName = customerName;
+        this.rating = rating;
 
     }
 
@@ -74,17 +77,36 @@ public class Movie {
         return year;
     }
 
-    public String getGenre () { return genre; }
+    public String getGenre() {
+        return genre;
+    }
 
     public String getSynopsis() {
         return synopsis;
     }
 
-    public Boolean getBooked(){
-         return booked;
+    public Boolean getBooked() {
+        if (booked) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getRating() {
+        if (rating == 0) {
+            return "Sin valorar";
+        }
+        else if  (rating <= 5) {
+            return String.valueOf(rating);
         }
 
-    public String getCustomerName(){
-         return customerName;
+        else {
+            return "5";
         }
+    }
 }
