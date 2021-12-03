@@ -126,9 +126,11 @@ class IntegrationTests {
     void allowsToMarkAvailableMovieById () throws Exception {
         Movie movie = movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
                 "Steven Spielberg", 1993, "Adventure", "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA.", false, "null", 5));
-        mockMvc.perform(MockMvcRequestBuilders.delete("/movies/"+ movie.getId()))
+        mockMvc.perform(MockMvcRequestBuilders.put("/movies/"+ movie.getId()+"/book?renter=null"))
                 .andExpect(status().isOk());
 
+    assertThat (movie.isBooked(), equalTo(false));
+    assertThat (movie.getRenter(),equalTo("null"));
     }
 
 }
