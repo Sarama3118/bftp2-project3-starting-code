@@ -14,29 +14,17 @@ public class Movie {
     private String director;
     private int year;
     private String genre;
-    @Lob
-    private String synopsis;
     private boolean booked = false;
     private String renter;
     private int rating;
-
-    public Movie(String jurassic_park, String s, String steven_spielberg, int i, String adventure, String s1, boolean b) {
-    }
+    @Lob
+    private String synopsis;
 
     public Movie(String title, String coverImage, String director, int year, String synopsis) {
         this.title = title;
         this.coverImage = coverImage;
         this.director = director;
         this.year = year;
-        this.synopsis = synopsis;
-    }
-
-    public Movie(String title, String coverImage, String director, int year, String genre, String synopsis) {
-        this.title = title;
-        this.coverImage = coverImage;
-        this.director = director;
-        this.year = year;
-        this.genre = genre;
         this.synopsis = synopsis;
     }
 
@@ -92,6 +80,7 @@ public class Movie {
     public Boolean Booked(boolean b) {
         return booked;
     }
+
     public void getBooked(boolean booked) {
         this.booked = booked;
     }

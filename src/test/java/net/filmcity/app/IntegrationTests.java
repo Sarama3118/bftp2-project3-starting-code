@@ -113,4 +113,13 @@ class IntegrationTests {
 
     }
 
+    @Test
+    void allowsToBackAllowsMovieById () throws Exception {
+        Movie movie = movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
+                "Steven Spielberg", 1993, "Adventure", "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA.", false, "null", 5));
+        mockMvc.perform(MockMvcRequestBuilders.delete("/movies/"+ movie.getId()))
+                .andExpect(status().isOk());
+
+    }
+
 }
