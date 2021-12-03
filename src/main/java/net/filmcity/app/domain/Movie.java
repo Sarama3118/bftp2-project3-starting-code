@@ -17,8 +17,12 @@ public class Movie {
     private boolean booked = false;
     private String renter;
     private int rating;
+<<<<<<< HEAD
     @Lob
     private String synopsis;
+=======
+
+>>>>>>> 2920d64f64c8cbb7f20518ee91ffcdab19bcd05f
 
     public Movie(String title, String coverImage, String director, int year, String synopsis) {
         this.title = title;
@@ -77,29 +81,36 @@ public class Movie {
         return synopsis;
     }
 
-    public Boolean Booked(boolean b) {
+    public boolean isBooked() {
+
         return booked;
     }
 
+<<<<<<< HEAD
     public void getBooked(boolean booked) {
+=======
+    public void setBooked(boolean booked) {
+
+>>>>>>> 2920d64f64c8cbb7f20518ee91ffcdab19bcd05f
         this.booked = booked;
     }
 
-    public void getRenter(String renter) {
+    public void setRenter(String renter) {
+
         this.renter = renter;
     }
 
-    public String getRating() {
-        if (rating == 0) {
-            return "Sin valorar";
-        }
-        else if  (rating <= 5) {
-            return String.valueOf(rating);
-        }
 
-        else {
-            return "5";
-        }
+    public int getRating () {
+        return rating;
     }
 
+    public void setRating(int rating) {
+
+        this.rating = rating;
+    }
+
+    public String getRenter() {
+        return renter;
+    }
 }
