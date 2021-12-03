@@ -3,6 +3,7 @@ package net.filmcity.app;
 import net.filmcity.app.domain.Movie;
 import net.filmcity.app.repositories.MovieRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,6 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -31,7 +33,7 @@ class IntegrationTests {
     MovieRepository movieRepository;
 
 
-    @AfterEach
+    @BeforeEach
     void tearDown() {
         movieRepository.deleteAll();
     }
@@ -102,14 +104,21 @@ class IntegrationTests {
             "Steven Spielberg", 1993, "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA."));
             mockMvc.perform(MockMvcRequestBuilders.delete("/movies/"+ movie.getId()))
                     .andExpect(status().isOk());
+
+            List<Movie> movies = movieRepository.findAll();
+            assertThat(movies, hasSize(0));
         }
 
          @Test
     void allowsToMarkRentedMovieById () throws Exception {
         Movie movie = movieRepository.save(new Movie("Jurassic Park", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
-                "Steven Spielberg", 1993, "Adventure", "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA.", true, "faby", 5));
-        mockMvc.perform(MockMvcRequestBuilders.delete("/movies/"+ movie.getId()))
+                "Steven Spielberg", 1993, "Adventure", "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA."));
+        mockMvc.perform(put("/movies/"+ movie.getId()+"/book?renter=faby"))
                 .andExpect(status().isOk());
+
+             Movie bookedMovie = movieRepository.findById(movie.getId()).get();
+             assertThat(bookedMovie.isBooked(), equalTo(true));
+             assertThat(bookedMovie.getRenter(), equalTo("faby"));
 
     }
 

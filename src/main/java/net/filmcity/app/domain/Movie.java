@@ -43,6 +43,10 @@ public class Movie {
 
     }
 
+    public Movie(String jurassic_park, String s, String steven_spielberg, int i, String adventure, String s1) {
+
+    }
+
     public Movie() {
 
     }
