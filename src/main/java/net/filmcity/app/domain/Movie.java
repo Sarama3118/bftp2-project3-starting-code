@@ -20,8 +20,6 @@ public class Movie {
     private String renter;
     private int rating;
 
-    public Movie(String jurassic_park, String s, String steven_spielberg, int i, String adventure, String s1, boolean b) {
-    }
 
     public Movie(String title, String coverImage, String director, int year, String synopsis) {
         this.title = title;
@@ -89,28 +87,32 @@ public class Movie {
         return synopsis;
     }
 
-    public Boolean Booked(boolean b) {
+    public boolean isBooked() {
+
         return booked;
     }
-    public void getBooked(boolean booked) {
+
+    public void setBooked(boolean booked) {
+
         this.booked = booked;
     }
 
-    public void getRenter(String renter) {
+    public void setRenter(String renter) {
+
         this.renter = renter;
     }
 
-    public String getRating() {
-        if (rating == 0) {
-            return "Sin valorar";
-        }
-        else if  (rating <= 5) {
-            return String.valueOf(rating);
-        }
 
-        else {
-            return "5";
-        }
+    public int getRating () {
+        return rating;
     }
 
+    public void setRating(int rating) {
+
+        this.rating = rating;
+    }
+
+    public String getRenter() {
+        return renter;
+    }
 }
