@@ -17,12 +17,10 @@ public class Movie {
     private boolean booked = false;
     private String renter;
     private int rating;
-<<<<<<< HEAD
+
     @Lob
     private String synopsis;
-=======
 
->>>>>>> 2920d64f64c8cbb7f20518ee91ffcdab19bcd05f
 
     public Movie(String title, String coverImage, String director, int year, String synopsis) {
         this.title = title;
@@ -86,12 +84,13 @@ public class Movie {
         return booked;
     }
 
-<<<<<<< HEAD
-    public void getBooked(boolean booked) {
-=======
+
+    public boolean getBooked() {
+        return booked;
+    }
+
     public void setBooked(boolean booked) {
 
->>>>>>> 2920d64f64c8cbb7f20518ee91ffcdab19bcd05f
         this.booked = booked;
     }
 
